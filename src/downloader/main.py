@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from datechecker import datechecker
 import requests
 import wget
 
@@ -11,6 +12,7 @@ def scrapping_poc():
     url = "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/cadastros/consultas/dados-publicos-cnpj"
     page = requests.get(url)    
     soup = BeautifulSoup(page.content, "html.parser")
+    print(type(soup))
     #print(soup.prettify())
     result = soup.find_all("a", class_="external-link")
     link_list = []
@@ -28,5 +30,7 @@ def scrapping_poc():
     print(data.get_text())
 
 if __name__ == '__main__':
-    scrapping_poc()
+    #scrapping_poc()
+    datechecker = datechecker.DateChecker()
+    print(datechecker.is_new_data_available())
     
