@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from datechecker import datechecker
+from datechecker import DateChecker
 import requests
 import wget
 
@@ -22,15 +22,10 @@ def scrapping_poc():
         link['item_link'] = item.get('href')
         link_list.append(link)
     
-    print(link_list)
-    print('\ndata modificacao')
-    modificacao = soup.find_all("span", class_="documentModified")
-    for spam in modificacao:
-        data = spam.find("span", class_="value")
-    print(data.get_text())
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     #scrapping_poc()
-    datechecker = datechecker.DateChecker()
+    datechecker = DateChecker()
     print(datechecker.is_new_data_available())
     
