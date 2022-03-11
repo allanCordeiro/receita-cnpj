@@ -39,4 +39,5 @@ pip-selfcheck.json
 datalake/bronze/*
 datalake/silver/*
 mapeamento
+.env
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,virtualenv
