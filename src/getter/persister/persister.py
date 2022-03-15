@@ -1,4 +1,4 @@
-from .db import core
+from dbcore import core
 
 class Persister:
     def __init__(self):

@@ -1,10 +1,8 @@
 from datetime import datetime
-from sqlite3 import Date
 from sqlalchemy import(create_engine, MetaData,
                        Table, Column, Boolean, Integer, String, DateTime)
 from utils import EnvData
 
-print(EnvData.get_env("DB_URI"))
 engine = create_engine(EnvData.get_env("DB_URI"))  
 meta_data = MetaData(bind=engine)
 current_date = datetime.now
