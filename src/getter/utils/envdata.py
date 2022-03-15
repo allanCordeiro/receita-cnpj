@@ -2,9 +2,10 @@ from decouple import config
 
 class EnvData:
     @staticmethod
-    def get_url():
+    def get_env(env_name: str) -> str:
         try:
-            return config("RFB_URL")
+            return config(env_name)
         except:
             #TODO
-            print("url not found")
+            print("config not found")
+            

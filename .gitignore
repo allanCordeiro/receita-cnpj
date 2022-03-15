@@ -36,6 +36,7 @@ pip-selfcheck.json
 .ionide
 
 # Support for Project snippet scope
+data/
 datalake/bronze/*
 datalake/silver/*
 mapeamento

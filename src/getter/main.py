@@ -1,6 +1,8 @@
 from datechecker import DateChecker
 from finder import Finder
+from persister import Persister
 import wget
+
 
 
 def downloader_poc():
@@ -14,7 +16,9 @@ def downloader_poc():
 if __name__ == "__main__":    
     datechecker = DateChecker()
     links = Finder()
+    save = Persister()
     if (datechecker.is_new_data_available()):
         lista_links = links.get_links_list()
+        save.insert(lista_links)
         for link in lista_links:
             print(link)    

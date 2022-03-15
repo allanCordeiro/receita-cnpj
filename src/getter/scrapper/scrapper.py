@@ -8,8 +8,7 @@ import requests
 
 class Scrapper:
     def __init__(self):
-        self.__url = EnvData.get_url()
-        #self.__url = "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/cadastros/consultas/dados-publicos-cnpj"
+        self.__url = EnvData.get_env("RFB_URL")        
         self.__page_content = ""
         self.__links_list = list()
                 
