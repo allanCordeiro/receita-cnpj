@@ -22,6 +22,7 @@ class Scrapper:
             date_string = span_data.find("span", class_="value")
             date_string = date_string.get_text().split(" ")[0]
             return datetime.strptime(date_string, "%d/%m/%Y")
+        
     
     
     def get_links(self) -> list:
