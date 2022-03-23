@@ -13,8 +13,8 @@ class LogHandlers:
     
 
 class Logger:
-    def __init__(self, handler: LogHandlers, mod_name: str) -> None:
-        self.__handler = handler
+    def __init__(self, mod_name: str) -> None:
+        #self.__handler = handler
         self_timestamp = datetime.now().strftime("%Y-%m-%d")
         self._current_dir = os.path.abspath(os.getcwd())
         self._log_dir = os.path.join(os.path.dirname(__file__))

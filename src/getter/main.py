@@ -3,12 +3,10 @@ from finder import Finder
 from persister import Persister
 from utils.logger import Logger, LogHandlers
 import wget
-import requests
-
 
 
 def downloader_poc():
-    log = Logger(LogHandlers.CONSOLE, __name__)   
+    log = Logger(__name__)   
     url = "http://200.152.38.155/CNPJ/K3241.K03200Y0.D20212.ESTABELE.zip"          
     log.info("testando o download")
     try:

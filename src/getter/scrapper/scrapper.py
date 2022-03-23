@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from datetime import datetime
 from urllib.error import HTTPError
-from utils import EnvData
+from utils import EnvData, Logger
 
 import requests
 
@@ -11,6 +11,7 @@ class Scrapper:
         self.__url = EnvData.get_env("RFB_URL")        
         self.__page_content = ""
         self.__links_list = list()
+        self.__logger = Logger(__name__)
                 
             
     def get_last_modification_date(self) -> datetime:
@@ -49,6 +50,6 @@ class Scrapper:
         try:
             return requests.get(self.__url)
         except HTTPError as http_error:
-            #TODO
-            print("TODO")
+            self.__logger.critical("Error during scrapping process.")
+            
             

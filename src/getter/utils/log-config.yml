@@ -8,6 +8,11 @@ handlers:
     level: DEBUG
     formatter: simple
     stream: ext://sys.stdout
+  logfile:
+    class: logging.FileHandler
+    filename: src/getter/logs/teste.log
+    formatter: simple
+    level: DEBUG
 loggers:
   exemplo:
     level: DEBUG
@@ -15,4 +20,4 @@ loggers:
     propagate: no
 root:
   level: DEBUG
-  handlers: [console]
+  handlers: [console, logfile]

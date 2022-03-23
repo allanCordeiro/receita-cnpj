@@ -2,6 +2,8 @@ from datetime import datetime
 from dbcore import core
 from scrapper import Scrapper
 from sqlalchemy.sql import text
+from utils.logger import Logger, LogHandlers
+
 
 
 class DateChecker:
@@ -9,6 +11,7 @@ class DateChecker:
         self.__scrapper = Scrapper()        
         self.__conn = core.engine.connect()        
         self._last_db_date = datetime(1901, 1, 1)
+        self._logger = Logger(__name__)
     
     @property
     def last_db_date(self):
@@ -17,7 +20,8 @@ class DateChecker:
     def is_new_data_available(self) -> bool:
         last_site_update = self.__scrapper.get_last_modification_date()    
         self._last_db_date = self._get_last_db_date()        
-        if self.last_db_date < last_site_update:
+        self._logger.info(f"last db date info: {self.last_db_date}")
+        if self.last_db_date < last_site_update:            
             return True
         return False
     
@@ -29,7 +33,7 @@ class DateChecker:
             get_date = self.__conn.execute(query).fetchall()
             return self._get_transformed_date(get_date)
         except IndexError:
-            #first time? when there's no data on available_links table
+            self._logger.info("Fresh data. Start to get some info.")
             return self.last_db_date
         
     
